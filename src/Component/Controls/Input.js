@@ -4,7 +4,7 @@ import React from 'react'
 export default function Input(props) {
   
     //destructuction index
-    const {name, label, value, onChange} = props;
+    const {name, label, value, error=null, onChange} = props;
     return (
         <TextField 
         variant="outlined"
@@ -12,6 +12,8 @@ export default function Input(props) {
         name={name}
         value={value}
         onChange={onChange}
+        //menampilkan error message ketika klik submit
+        {...(error && {error:true,helperText:error})}
         />
     )
 }
