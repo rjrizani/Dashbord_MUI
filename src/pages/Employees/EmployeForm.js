@@ -23,7 +23,9 @@ const initialFValues = {
 
 }
 
-export default function EmployeForm() {
+export default function EmployeForm(props) {
+
+    const {addOrEdit, recordForEdit} = props;
 
     const validate = (fieldValues = values) => {
         let temp = {...errors}
@@ -57,10 +59,18 @@ export default function EmployeForm() {
     const handleSubmit = e => {
         e.preventDefault()
         if (validate()){
-            employeeService.insertEmployee(values)
+            addOrEdit(values, resetForm);
+            //employeeService.insertEmployee(values)
            // resetForm()
         }
     }
+
+    useEffect(() => {
+        if(recordForEdit != null)
+            setValues({
+                ...recordForEdit
+            })
+    }, [recordForEdit])
 
     return (
         <Form onSubmit={handleSubmit}>
