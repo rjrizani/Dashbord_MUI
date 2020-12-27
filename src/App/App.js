@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from '@material-ui/core';
 import Header from '../Component/Header';
 import SideMenu from '../Component/SideMenu';
